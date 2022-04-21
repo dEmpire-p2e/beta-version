@@ -1,0 +1,16 @@
+{
+  "name": "rtsgame",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ harshu4/rtsgame",
+    "create-local": "graph create --node http://localhost:8020/ harshu4/rtsgame",
+    "remove-local": "graph remove --node http://localhost:8020/ harshu4/rtsgame",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 harshu4/rtsgame"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.26.0",
+    "@graphprotocol/graph-ts": "0.24.1"
+  }
+}

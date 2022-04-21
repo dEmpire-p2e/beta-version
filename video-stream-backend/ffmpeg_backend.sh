@@ -1,0 +1,1 @@
+ffmpeg -stream_loop -1 -safe 0 -i http://127.0.0.1:3000/ffmpeg -c:v libx264 -crf 19 -c:a copy -f flv rtmp://127.0.0.1:1935/stream/

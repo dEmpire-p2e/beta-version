@@ -1,0 +1,119 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    network: mainnet
+    name: MainGame
+
+    
+    source:
+      address: "0xcA87B72497FB27843822A32bFea690B21fd1c1eB"
+      abi: MainGame
+      startBlock: 15482601
+    
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - nft
+        - nftamount
+        - user
+        - miner
+      abis:
+        - name: MainGame
+          file: ./abis/MainGame.json
+      eventHandlers:
+        - event: addERC721(uint256,address,uint256,string,bool)
+          handler: handleAddERC721
+        - event: addERC1155(uint256,address,uint256,string,bool,uint256)
+          handler: handleAddERC1155
+        - event: startGamev(uint256,address)
+          handler: handlestartGamev
+      file: ./src/MainGame.ts
+
+  - kind: ethereum/contract
+    network: mainnet
+    name: Miner
+   
+    
+    
+    source:
+      address: "0x491Ce35a0c7a285B74eC47c0013014Aafaffc84B"
+      abi: Miner
+      startBlock: 15482601
+    
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - nft
+        - nftamount
+        - user
+        - miner
+      abis:
+        - name: Miner
+          file: ./abis/Miner.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/Miner.ts
+
+  - kind: ethereum/contract
+    network: mainnet
+    name: Assets
+
+    
+    source:
+      address: "0xF8C2981DE474129dCB57B13F3dCA20fF7D9d801c"
+      abi: Assets
+      startBlock: 15482601
+    
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - nft
+        - nftamount
+        - user
+        - miner
+      abis:
+        - name: Assets
+          file: ./abis/Assets.json
+      eventHandlers:
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransfer
+        - event: unLock(address,address,uint256,uint256)
+          handler: handleUnlock
+      file: ./src/Assets.ts
+  - kind: ethereum/contract
+    network: mainnet
+    name: Aureus
+
+    
+    
+    source:
+      address: "0x24F3437CB4e6c16becfeB0Ca415079F5A62abf5a"
+      abi: Aureus
+      startBlock: 15482601
+    
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - nft
+        - nftamount
+        - user
+        - miner
+      abis:
+        - name: Aureus
+          file: ./abis/Aureus.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/Aureus.ts
+ 

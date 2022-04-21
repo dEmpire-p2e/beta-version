@@ -1,0 +1,37 @@
+
+type nft @entity {
+  id: ID!
+  nftid: BigInt!
+  name:String!
+  type: Boolean!
+  price: BigInt!
+  contract: String!
+  owner: String
+  url:String
+}
+
+type nftamount @entity {
+  id: ID! 
+  nft: nft
+  amount: BigInt!
+  locked: BigInt!
+  owner: user! 
+}
+
+type user @entity{
+  id: ID!
+  nfts: [nftamount!] @derivedFrom(field: "owner")
+  aureus:BigInt
+  minerid: miner @derivedFrom(field: "owner")
+  townhall:BigInt
+}
+
+
+type miner @entity {
+  id: ID!
+  owner: user!
+  locked: Boolean!
+  townhall: BigInt
+  lastcollected: BigInt!
+}
+
